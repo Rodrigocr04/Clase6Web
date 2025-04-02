@@ -1,10 +1,17 @@
 package com.interfazgrafica.version1.services;
 
+<<<<<<< HEAD
 import java.util.Map;
+=======
+import com.google.cloud.firestore.Firestore;
+import com.google.firebase.cloud.FirestoreClient;
+
+>>>>>>> ba230306af08ef4a56b15810bafb6a49185a2c3e
 import java.util.concurrent.ExecutionException;
 
 import org.springframework.stereotype.Service;
 
+<<<<<<< HEAD
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
 import com.google.firebase.cloud.FirestoreClient;
@@ -60,5 +67,20 @@ public class FirebaseService {
         
         String storedPassword = userDoc.getString("password");
         return storedPassword != null && storedPassword.equals(password);
+=======
+@Service
+public class FirebaseService {
+
+    public void saveData(String collectionName, Object data) throws ExecutionException, InterruptedException {
+        Firestore db = FirestoreClient.getFirestore(); // Obtiene la instancia de Firestore
+        db.collection(collectionName)                 // Selecciona la colección
+          .add(data)                                 // Guarda los datos y genera un ID automático
+          .get();                                    // Espera a que se complete la operación
+    }
+
+    public Object getData(String collectionName, String documentId) throws Exception {
+        Firestore db = FirestoreClient.getFirestore();
+        return db.collection(collectionName).document(documentId).get().get().getData();
+>>>>>>> ba230306af08ef4a56b15810bafb6a49185a2c3e
     }
 }

@@ -11,8 +11,11 @@
   },
   "dependencies": {
     "@stomp/stompjs": "^7.0.1",
+<<<<<<< HEAD
     "axios": "^1.8.4",
     "firebase": "^11.6.0",
+=======
+>>>>>>> ba230306af08ef4a56b15810bafb6a49185a2c3e
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.4.0",

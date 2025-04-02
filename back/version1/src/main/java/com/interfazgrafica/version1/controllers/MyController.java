@@ -4,9 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+=======
+>>>>>>> ba230306af08ef4a56b15810bafb6a49185a2c3e
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,12 +22,16 @@ import com.interfazgrafica.version1.services.FirebaseService;
 
 @RestController
 @RequestMapping("/api")
+<<<<<<< HEAD
 @CrossOrigin(origins = "http://localhost:5173")
+=======
+>>>>>>> ba230306af08ef4a56b15810bafb6a49185a2c3e
 public class MyController {
 
     @Autowired
     private FirebaseService firebaseService;
 
+<<<<<<< HEAD
     // Guardar datos genéricos (con ID automático)
     @PostMapping("/save/{collectionName}")
     public String saveData(
@@ -35,17 +42,37 @@ public class MyController {
     }
 
     // Guardar ticket (con ID automático)
+=======
+    @PostMapping("/save/{name}")
+    public String saveData(
+            @PathVariable String name,
+            @RequestBody Object data
+    ) throws Exception {
+        String collectionName = "users";
+        firebaseService.saveData(collectionName, data);
+        return "Data saved successfully for user: " + name;
+    }
+
+    // Endpoint para guardar tickets (GET)
+>>>>>>> ba230306af08ef4a56b15810bafb6a49185a2c3e
     @GetMapping("/test-save/{name}")
     public String saveTicket(
             @PathVariable String name,
             @RequestParam String responsible,
+<<<<<<< HEAD
             @RequestParam String deadline) throws Exception {
+=======
+            @RequestParam String deadline
+    ) throws Exception {
+        String collectionName = "tickets";
+>>>>>>> ba230306af08ef4a56b15810bafb6a49185a2c3e
         
         Map<String, Object> ticketData = new HashMap<>();
         ticketData.put("nombre", name);
         ticketData.put("responsable", responsible);
         ticketData.put("fechaEntrega", deadline);
         
+<<<<<<< HEAD
         firebaseService.saveData("tickets", ticketData);
         
         return "Ticket guardado: " + name + ", Responsable: " + responsible + ", Fecha: " + deadline;
@@ -82,4 +109,12 @@ public class MyController {
         }
     }
 
+=======
+        firebaseService.saveData(collectionName, ticketData);
+        
+        return "Ticket guardado: " + name + 
+               ", Responsable: " + responsible + 
+               ", Fecha: " + deadline;
+    }
+>>>>>>> ba230306af08ef4a56b15810bafb6a49185a2c3e
 }
